@@ -1,5 +1,3 @@
-import {} from "./actions";
-
 const initialState = {
   charPos: {
     x: 0,
@@ -17,10 +15,11 @@ const initialState = {
 const charReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
-    case "move-foward":
+    case "move-front":
+      console.log("foward case");
       return {
         ...state,
-        charPos: { ...state.charPos, x: state.charPos + 0.5 },
+        charPos: { ...state.charPos, x: state.charPos++ },
       };
     default:
       return state;
