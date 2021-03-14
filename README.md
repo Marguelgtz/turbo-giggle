@@ -23,6 +23,23 @@ Im bored but I have wine, a sandwich and my computer. Lets see what I can build 
 
 ---
 
+## Hooks
+- `useMousePos()` returns mouse position coordinates **{mouseX | MouseY}**
+```js
+const { mouseX, mouseY } = useMousePos();
+```
+- `useWindow()` returns window **{windowX | windowY}**
+```js
+const { windowX, windowY } = useWindowSize();
+```
+- `useKeyPress()` recieves desired key press and callback function for when the key is pressed **(keyPressed, callBack)**
+```js
+useKeyPress("w", () => {
+    console.log("move front fire");
+    dispatch(moveFront());
+    });
+```
+
 ## Hook Ideas
 
 > not sure if this makes sense
