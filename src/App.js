@@ -29,17 +29,14 @@ const App = () => {
       <Canvas shadowMap style={{ background: "#87CEEB" }}>
         <PerspectiveCamera
           makeDefault // Main Camera
-          position={[
-            -adjustedX / 100,
-            adjustedY / 100 - 2,
-            -Math.abs(adjustedX / 100) - 2,
-          ]} // boilerplate position will do follow obj hook for position or through redux maybe
+          position={[-adjustedX / 100, adjustedY / 100 - 2, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
         >
           <mesh />
         </PerspectiveCamera>
         <OrbitControls />
         <ambientLight intensity={0.2} />
         <Plane />
+        <Box />
       </Canvas>
     </div>
   );
