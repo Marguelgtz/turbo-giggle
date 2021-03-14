@@ -59,7 +59,7 @@ const App = () => {
         </spotLight>
         <Box castShadow color="gray" />
         {/* character movement - dumb/easy way */}
-        {moveFront
+        {/* {moveFront
           ? setCharacterPos({ ...characterPos, charX: characterPos.charX++ })
           : null}
         {moveBack
@@ -70,7 +70,7 @@ const App = () => {
           : null}
         {moveRight
           ? setCharacterPos({ ...characterPos, charY: characterPos.charX++ })
-          : null}
+          : null} */}
       </Canvas>
     </div>
   );
