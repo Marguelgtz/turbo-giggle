@@ -31,7 +31,7 @@ const App = () => {
           makeDefault // Main Camera
           position={[
             -adjustedX / 100,
-            -(adjustedY / 100 - 2),
+            adjustedY / 100 - 2,
             -Math.abs(adjustedX / 100) - 2,
           ]} // boilerplate position will do follow obj hook for position or through redux maybe
         >
