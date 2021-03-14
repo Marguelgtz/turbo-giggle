@@ -19,3 +19,14 @@ Im bored but I have wine, a sandwich and my computer. Lets see what I can build 
 - Some redux too why not
 
 ---
+
+## Hook Ideas
+
+> not sure if this makes sense
+
+- Follow obj hook
+- User Control Hook
+- User Actions Hooks
+  - Shoot (`useShoot`)
+  - Loot (`useLoot`)
+  - Interact (`useInteract`)

@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useCallback, useEffect } from "react";
+import { Canvas } from "react-three-fiber";
+import {
+  OrbitControls,
+  Box,
+  Cylinder,
+  PerspectiveCamera,
+} from "@react-three/drei";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <Canvas>
+        <PerspectiveCamera
+          makeDefault // Main Camera
+          position={[10, 0, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
         >
-          Learn React
-        </a>
-      </header>
+          <mesh />
+        </PerspectiveCamera>
+      </Canvas>
     </div>
   );
-}
+};
 
 export default App;
