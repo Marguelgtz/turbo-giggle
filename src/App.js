@@ -8,6 +8,8 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei";
 
+import { useDispatch } from "react-redux";
+
 //Components
 import Plane from "./components/plane";
 
@@ -17,6 +19,8 @@ import useWindowSize from "./hooks/useWindowSize";
 import useKeyPress from "./hooks/useKeyPress";
 
 const App = () => {
+  const dispatch = useDispatch();
+
   //states will prob go to redux....maybe idk
   const [characterPos, setCharacterPos] = useState({
     charX: 0,
@@ -58,9 +62,10 @@ const App = () => {
           <object3D position={[0, 0, 0]} />
         </spotLight>
         <Box castShadow color="gray" />
+
         {/* character movement - dumb/easy way */}
         {/* {moveFront
-          ? setCharacterPos({ ...characterPos, charX: characterPos.charX++ })
+          ? setCharacterPos({ ...characterPos, charX: characterPos.charX + .5 })
           : null}
         {moveBack
           ? setCharacterPos({ ...characterPos, charX: characterPos.charX-- })
