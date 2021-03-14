@@ -41,5 +41,9 @@ Im bored but I have wine, a sandwich and my computer. Lets see what I can build 
   - [ ] Cube
   - [ ] Model
 - [ ] Control Camera with mouse
-- [ ] Character Movement with keys
+- [x] Character Movement with keys 
+  - `W` => Foward
+  - `S` => Backward
+  - `A` => Left
+  - `D` => Right
   > idk what else for now
