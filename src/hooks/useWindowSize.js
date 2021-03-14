@@ -3,15 +3,15 @@ import { useState, useEffect } from "react";
 // Hook
 function useWindowSize() {
   const [windowSize, setWindowSize] = useState({
-    width: undefined,
-    height: undefined,
+    windowX: undefined,
+    windowY: undefined,
   });
 
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        windowX: window.innerWidth,
+        windowY: window.innerHeight,
       });
     };
 
