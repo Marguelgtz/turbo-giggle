@@ -27,17 +27,25 @@ import useKeyPress from "./hooks/useKeyPress";
 const App = () => {
   const dispatch = useDispatch();
 
-  //states will prob go to redux....maybe idk
+  //Char position
   const charPos = useSelector((state) => state.character.charPos);
-
+  //Char position control
   useKeyPress("w", () => {
     console.log("move front fire");
     dispatch(moveFront());
   });
-  // console.log("move front", moveFront);
-  const moveBack = useKeyPress("s");
-  const moveLeft = useKeyPress("a");
-  const moveRight = useKeyPress("d");
+  useKeyPress("s", () => {
+    console.log("move back fire");
+    dispatch(moveBack());
+  });
+  useKeyPress("a", () => {
+    console.log("move left fire");
+    dispatch(moveLeft());
+  });
+  useKeyPress("d", () => {
+    console.log("move right fire");
+    dispatch(moveRight());
+  });
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
