@@ -9,11 +9,17 @@ import {
 } from "@react-three/drei";
 
 import { useDispatch, useSelector } from "react-redux";
+
+//Movement
 import {
   moveFront,
   moveBack,
   moveLeft,
   moveRight,
+  moveFrontRight,
+  moveFrontLeft,
+  moveBackLeft,
+  moveBackRight,
 } from "./redux/character/actions";
 
 //Components
@@ -30,25 +36,41 @@ const App = () => {
   //Char position
   const charPos = useSelector((state) => state.character.charPos);
 
-  console.log("char pos", charPos);
+  // console.log("char pos", charPos);
 
   //Char position control
   useKeyPress("w", () => {
-    console.log("move front fire");
+    // console.log("move front fire");
     dispatch(moveFront());
   });
   useKeyPress("s", () => {
-    console.log("move back fire");
+    // console.log("move back fire");
     dispatch(moveBack());
   });
   useKeyPress("a", () => {
-    console.log("move left fire");
+    // console.log("move left fire");
     dispatch(moveLeft());
   });
   useKeyPress("d", () => {
-    console.log("move right fire");
+    // console.log("move right fire");
     dispatch(moveRight());
   });
+  // useKeyPress(["w", "d"], () => {
+  //   console.log("move up/right fire");
+  //   dispatch(moveFrontRight());
+  // });
+  // useKeyPress(["w", "a"], () => {
+  //   console.log("move up/left fire");
+  //   dispatch(moveFrontLeft());
+  // });
+  // useKeyPress(["s", "a"], () => {
+  //   console.log("move down/left fire");
+  //   dispatch(moveBackLeft());
+  // });
+  // useKeyPress(["s", "d"], () => {
+  //   console.log("move down/rigth fire");
+  //   dispatch(moveBackRight());
+  // });
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
@@ -56,6 +78,8 @@ const App = () => {
   //adjust values to be accurate
   const adjustedX = mouseX - windowX / 2;
   const adjustedY = mouseY - windowY / 2;
+
+  //continue tomorrow no more wine
 
   return (
     <div className="App">
