@@ -62,9 +62,9 @@ const App = () => {
       <Canvas shadowMap style={{ background: "#87CEEB" }}>
         <PerspectiveCamera
           makeDefault // Main Camera
-          position={[charPos.x, charPos.y + 5, charPos.z - 10]} // boilerplate position will do follow obj hook for position or through redux maybe
+          position={[-adjustedX / 100, adjustedY / 100, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
         >
-          <mesh />
+          {/* <mesh /> */}
         </PerspectiveCamera>
         <OrbitControls />
         <ambientLight intensity={0.2} />
