@@ -24,14 +24,16 @@ const App = () => {
   const adjustedX = mouseX - windowX / 2;
   const adjustedY = mouseY - windowY / 2;
 
-  console.log(adjustedX, adjustedY);
-
   return (
     <div className="App">
       <Canvas shadowMap style={{ background: "#87CEEB" }}>
         <PerspectiveCamera
           makeDefault // Main Camera
-          position={[10, 0, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
+          position={[
+            -adjustedX / 100,
+            -(adjustedY / 100 - 2),
+            -Math.abs(adjustedX / 100) - 2,
+          ]} // boilerplate position will do follow obj hook for position or through redux maybe
         >
           <mesh />
         </PerspectiveCamera>
