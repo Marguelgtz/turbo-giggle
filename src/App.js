@@ -9,11 +9,17 @@ import {
 } from "@react-three/drei";
 
 import { useDispatch, useSelector } from "react-redux";
+
+//Movement
 import {
   moveFront,
   moveBack,
   moveLeft,
   moveRight,
+  moveUpRight,
+  moveUpLeft,
+  moveDownLeft,
+  moveDownRight,
 } from "./redux/character/actions";
 
 //Components
@@ -47,6 +53,10 @@ const App = () => {
   });
   useKeyPress("d", () => {
     console.log("move right fire");
+    dispatch(moveRight());
+  });
+  useKeyPress(["w", "d"], () => {
+    console.log("move up/right fire");
     dispatch(moveRight());
   });
 
