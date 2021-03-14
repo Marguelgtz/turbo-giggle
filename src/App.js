@@ -16,13 +16,15 @@ import useMousePos from "./hooks/useMousePos";
 import useWindowSize from "./hooks/useWindowSize";
 
 const App = () => {
-  const { mouseX, MouseY } = useMousePos();
+  const { mouseX, mouseY } = useMousePos();
+  console.log("mouse", mouseX, mouseY);
   const { windowX, windowY } = useWindowSize();
+  console.log("window", windowX, windowY);
   //adjust values to be accurate
   const adjustedX = mouseX - windowX / 2;
-  const adjustedY = MouseY - windowY / 2;
+  const adjustedY = mouseY - windowY / 2;
 
-  console.log(adjustedX, adjustedY);
+  // console.log(adjustedX, adjustedY);
 
   return (
     <div className="App">
