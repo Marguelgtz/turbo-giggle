@@ -4,6 +4,7 @@ const useMousePosition = () => {
   const [mousePosition, setMousePosition] = useState({ x: null, y: null });
 
   const updateMousePosition = (ev) => {
+    console.log("update mouse ev", ev);
     setMousePosition({ x: ev.clientX, y: ev.clientY });
   };
 
