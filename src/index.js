@@ -12,7 +12,7 @@ import character from "./redux/character/reducer";
 import gameStatus from "./redux/gameStatus/reducer";
 
 const reducer = combineReducers({
-  drumsPosition: character,
+  character: character,
   gameStatus: gameStatus,
 });
 

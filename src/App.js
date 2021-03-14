@@ -8,7 +8,7 @@ import {
   PerspectiveCamera,
 } from "@react-three/drei";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //Components
 import Plane from "./components/plane";
@@ -22,12 +22,10 @@ const App = () => {
   const dispatch = useDispatch();
 
   //states will prob go to redux....maybe idk
-  const [characterPos, setCharacterPos] = useState({
-    charX: 0,
-    charZ: 0,
-  });
+  const charPos = useSelector((state) => state.character.charPos);
 
   const moveFront = useKeyPress("w");
+  console.log("move front", moveFront);
   const moveBack = useKeyPress("s");
   const moveLeft = useKeyPress("a");
   const moveRight = useKeyPress("d");
@@ -59,15 +57,18 @@ const App = () => {
           shadow-mapSize-height={2048}
           castShadow
         >
-          <object3D position={[0, 0, 0]} />
+          <object3D position={[charPos.x, charPos.y, charPos.z]} />
         </spotLight>
         <Box castShadow color="gray" />
 
         {/* character movement - dumb/easy way */}
-        {/* {moveFront
-          ? setCharacterPos({ ...characterPos, charX: characterPos.charX + .5 })
+        {moveFront
+          ? () => {
+              console.log("move front fire");
+              dispatch({ type: "move-foward" });
+            }
           : null}
-        {moveBack
+        {/* {moveBack
           ? setCharacterPos({ ...characterPos, charX: characterPos.charX-- })
           : null}
         {moveLeft
