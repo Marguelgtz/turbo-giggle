@@ -79,7 +79,11 @@ const App = () => {
         >
           <object3D position={[charPos.x, charPos.y, charPos.z]} />
         </spotLight>
-        <Box castShadow color="gray" />
+        <Box
+          castShadow
+          color="gray"
+          position={[charPos.x, charPos.y, charPos.z]}
+        />
 
         {/* character movement - dumb/easy way */}
         {/* {!moveFront
