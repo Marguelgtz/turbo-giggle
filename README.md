@@ -37,13 +37,15 @@ Im bored but I have wine, a sandwich and my computer. Lets see what I can build 
 
 ## Todo
 
-- [ ] character obj
-  - [ ] Cube
+- [x] character obj
+  - [x] Cube
   - [ ] Model
-- [ ] Control Camera with mouse
+- [ ] Control Camera with mouse (Kind of working??)
+- [ ] Camera Follow Character (3rd personish)
 - [x] Character Movement with keys 
   - `W` => Foward
   - `S` => Backward
   - `A` => Left
   - `D` => Right
-  > idk what else for now
+
+> idk what else for now
