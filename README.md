@@ -16,3 +16,6 @@ Im bored but I have wine, a sandwich and my computer. Lets see what I can build 
 - Component based
 - Clean code / commits / branching
 - Good Music
+- Some redux too why not
+
+---
