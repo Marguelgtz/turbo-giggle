@@ -24,8 +24,11 @@ const App = () => {
   //states will prob go to redux....maybe idk
   const charPos = useSelector((state) => state.character.charPos);
 
-  const moveFront = useKeyPress("w");
-  console.log("move front", moveFront);
+  useKeyPress("w", () => {
+    console.log("move front fire");
+    dispatch({ type: "move-foward" });
+  });
+  // console.log("move front", moveFront);
   const moveBack = useKeyPress("s");
   const moveLeft = useKeyPress("a");
   const moveRight = useKeyPress("d");
@@ -62,12 +65,12 @@ const App = () => {
         <Box castShadow color="gray" />
 
         {/* character movement - dumb/easy way */}
-        {moveFront
+        {/* {!moveFront
           ? () => {
               console.log("move front fire");
               dispatch({ type: "move-foward" });
             }
-          : null}
+          : null} */}
         {/* {moveBack
           ? setCharacterPos({ ...characterPos, charX: characterPos.charX-- })
           : null}
