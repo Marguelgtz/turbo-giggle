@@ -5,8 +5,25 @@ const useKeyPress = (targetKey, callback) => {
 
   let keysPressed = {};
 
-  function downHandler({ key }) {
-    //multiple key support
+  // function downHandler({ key }) {
+  //   //multiple key support
+
+  //   //nested ternatry not working
+
+  //   // Array.isArray(targetKey)
+  //   // ? keysPressed[targetKey[0]] && key === targetKey[1]
+  //   //   ? callback()
+  //   //   : null
+  //   // : key === targetKey
+  //   // ? callback()
+  //   // : null;
+
+  //   if (key === targetKey) {
+  //     callback();
+  //   }
+  // }
+  // single and multi key support w ternary
+  const downHandler = ({ key }) =>
     Array.isArray(targetKey)
       ? keysPressed[targetKey[0]] && key === targetKey[1]
         ? callback()
@@ -14,10 +31,6 @@ const useKeyPress = (targetKey, callback) => {
       : key === targetKey
       ? callback()
       : null;
-    if (key === targetKey) {
-      callback();
-    }
-  }
 
   useEffect(() => {
     window.addEventListener("keydown", downHandler);
