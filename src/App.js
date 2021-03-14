@@ -40,37 +40,37 @@ const App = () => {
 
   //Char position control
   useKeyPress("w", () => {
-    console.log("move front fire");
+    // console.log("move front fire");
     dispatch(moveFront());
   });
   useKeyPress("s", () => {
-    console.log("move back fire");
+    // console.log("move back fire");
     dispatch(moveBack());
   });
   useKeyPress("a", () => {
-    console.log("move left fire");
+    // console.log("move left fire");
     dispatch(moveLeft());
   });
   useKeyPress("d", () => {
-    console.log("move right fire");
+    // console.log("move right fire");
     dispatch(moveRight());
   });
-  useKeyPress(["w", "d"], () => {
-    console.log("move up/right fire");
-    dispatch(moveFrontRight());
-  });
-  useKeyPress(["w", "a"], () => {
-    console.log("move up/left fire");
-    dispatch(moveFrontLeft());
-  });
-  useKeyPress(["s", "a"], () => {
-    console.log("move down/left fire");
-    dispatch(moveBackLeft());
-  });
-  useKeyPress(["s", "d"], () => {
-    console.log("move down/rigth fire");
-    dispatch(moveBackRight());
-  });
+  // useKeyPress(["w", "d"], () => {
+  //   console.log("move up/right fire");
+  //   dispatch(moveFrontRight());
+  // });
+  // useKeyPress(["w", "a"], () => {
+  //   console.log("move up/left fire");
+  //   dispatch(moveFrontLeft());
+  // });
+  // useKeyPress(["s", "a"], () => {
+  //   console.log("move down/left fire");
+  //   dispatch(moveBackLeft());
+  // });
+  // useKeyPress(["s", "d"], () => {
+  //   console.log("move down/rigth fire");
+  //   dispatch(moveBackRight());
+  // });
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();

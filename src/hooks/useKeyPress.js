@@ -3,17 +3,18 @@ import { useState, useEffect } from "react";
 const useKeyPress = (targetKey, callback) => {
   const [keyPressed, setKeyPressed] = useState(false);
 
-  let keysPressed = {};
+  // let keysPressed = {};
 
   function downHandler({ key }) {
     //multiple key support
-    keysPressed[key] = true;
 
-    if (Array.isArray(targetKey)) {
-      if (keysPressed[targetKey[0]] && key === targetKey[1]) {
-        callback();
-      }
-    }
+    // console.log(keysPressed);
+    // if (Array.isArray(targetKey)) {
+    //   if (keysPressed[targetKey[0]] && key === targetKey[1]) {
+    //     callback();
+    //   }
+    // }
+    console.log(key);
     if (key === targetKey) {
       callback();
     }
