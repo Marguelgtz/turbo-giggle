@@ -14,10 +14,21 @@ import Plane from "./components/plane";
 //Hooks
 import useMousePos from "./hooks/useMousePos";
 import useWindowSize from "./hooks/useWindowSize";
+import useKeyPress from "./hooks/useKeyPress";
 
 const App = () => {
-  const { mouseX, mouseY } = useMousePos();
+  //states will prob go to redux....maybe idk
+  const [characterPos, setCharacterPos] = useState({
+    charX: 0,
+    charZ: 0,
+  });
 
+  const moveFront = useKeyPress("w");
+  const moveBack = useKeyPress("s");
+  const moveLeft = useKeyPress("a");
+  const moveRight = useKeyPress("d");
+
+  const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
 
   //adjust values to be accurate
@@ -47,6 +58,19 @@ const App = () => {
           <object3D position={[0, 0, 0]} />
         </spotLight>
         <Box castShadow color="gray" />
+        {/* character movement - dumb/easy way */}
+        {moveFront
+          ? setCharacterPos({ ...characterPos, charX: characterPos.charX++ })
+          : null}
+        {moveBack
+          ? setCharacterPos({ ...characterPos, charX: characterPos.charX-- })
+          : null}
+        {moveLeft
+          ? setCharacterPos({ ...characterPos, charY: characterPos.charX-- })
+          : null}
+        {moveRight
+          ? setCharacterPos({ ...characterPos, charY: characterPos.charX++ })
+          : null}
       </Canvas>
     </div>
   );
