@@ -10,7 +10,6 @@ const useKeyPress = (targetKey, callback) => {
     keysPressed[key] = true;
 
     if (Array.isArray(targetKey)) {
-      console.log(keysPressed);
       if (keysPressed[targetKey[0]] && key === targetKey[1]) {
         callback();
       }
@@ -19,15 +18,6 @@ const useKeyPress = (targetKey, callback) => {
       callback();
     }
   }
-  // single and multi key support w ternary
-  // const downHandler = ({ key }) =>
-  //   Array.isArray(targetKey)
-  //     ? keysPressed[targetKey[0]] && key === targetKey[1]
-  //       ? callback()
-  //       : null
-  //     : key === targetKey
-  //     ? callback()
-  //     : null;
 
   useEffect(() => {
     window.addEventListener("keydown", downHandler);

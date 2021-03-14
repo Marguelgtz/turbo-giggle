@@ -49,10 +49,6 @@ const App = () => {
     console.log("move right fire");
     dispatch(moveRight());
   });
-  useKeyPress(["w", "d"], () => {
-    console.log("move up/right fire");
-    dispatch(moveRight());
-  });
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
