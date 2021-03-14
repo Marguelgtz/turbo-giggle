@@ -11,7 +11,19 @@ import {
 //Components
 import Plane from "./components/plane";
 
+//Hooks
+import useMousePos from "./hooks/useMousePos";
+import useWindowSize from "./hooks/useWindowSize";
+
 const App = () => {
+  const { mouseX, MouseY } = useMousePos();
+  const { windowX, windowY } = useWindowSize();
+  //adjust values to be accurate
+  const adjustedX = mouseX - windowX / 2;
+  const adjustedY = MouseY - windowY / 2;
+
+  console.log(adjustedX, adjustedY);
+
   return (
     <div className="App">
       <Canvas shadowMap style={{ background: "#87CEEB" }}>
