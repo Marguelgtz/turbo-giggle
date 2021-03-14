@@ -9,6 +9,12 @@ import {
 } from "@react-three/drei";
 
 import { useDispatch, useSelector } from "react-redux";
+import {
+  moveFront,
+  moveBack,
+  moveLeft,
+  moveRight,
+} from "./redux/character/actions";
 
 //Components
 import Plane from "./components/plane";
@@ -26,7 +32,7 @@ const App = () => {
 
   useKeyPress("w", () => {
     console.log("move front fire");
-    dispatch({ type: "move-foward" });
+    dispatch(moveFront());
   });
   // console.log("move front", moveFront);
   const moveBack = useKeyPress("s");
