@@ -29,6 +29,9 @@ const App = () => {
 
   //Char position
   const charPos = useSelector((state) => state.character.charPos);
+
+  console.log("char pos", charPos);
+
   //Char position control
   useKeyPress("w", () => {
     console.log("move front fire");
