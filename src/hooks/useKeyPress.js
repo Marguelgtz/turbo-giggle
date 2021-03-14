@@ -4,6 +4,7 @@ const useKeyPress = (targetKey, callback) => {
   const [keyPressed, setKeyPressed] = useState(false);
 
   function downHandler({ key }) {
+    console.log(key);
     if (key === targetKey) {
       callback();
     }
