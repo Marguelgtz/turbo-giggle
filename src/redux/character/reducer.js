@@ -15,6 +15,7 @@ const initialState = {
 };
 
 const charReducer = (state = initialState, action) => {
+  console.log(action);
   switch (action.type) {
     case "move-foward":
       return {
