@@ -16,10 +16,10 @@ import {
   moveBack,
   moveLeft,
   moveRight,
-  moveUpRight,
-  moveUpLeft,
-  moveDownLeft,
-  moveDownRight,
+  moveFrontRight,
+  moveFrontLeft,
+  moveBackLeft,
+  moveBackRight,
 } from "./redux/character/actions";
 
 //Components
@@ -57,7 +57,19 @@ const App = () => {
   });
   useKeyPress(["w", "d"], () => {
     console.log("move up/right fire");
-    dispatch(moveRight());
+    dispatch(moveFrontRight());
+  });
+  useKeyPress(["w", "a"], () => {
+    console.log("move up/left fire");
+    dispatch(moveFrontLeft());
+  });
+  useKeyPress(["s", "a"], () => {
+    console.log("move down/left fire");
+    dispatch(moveBackLeft());
+  });
+  useKeyPress(["s", "d"], () => {
+    console.log("move down/rigth fire");
+    dispatch(moveBackRight());
   });
 
   const { mouseX, mouseY } = useMousePos();
