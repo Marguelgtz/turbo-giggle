@@ -18,17 +18,17 @@ export const moveRight = () => {
 
 //Diagonal movement
 
-export const moveUpRight = () => {
-  return { type: "move-up-right" };
+export const moveFrontRight = () => {
+  return { type: "move-front-right" };
 };
 
-export const moveUpLeft = () => {
-  return { type: "move-up-left" };
+export const moveFrontLeft = () => {
+  return { type: "move-front-left" };
 };
 
-export const moveDownLeft = () => {
-  return { type: "move-down-left" };
+export const moveBackLeft = () => {
+  return { type: "move-back-left" };
 };
-export const moveDownRight = () => {
-  return { type: "move-down-right" };
+export const moveBackRight = () => {
+  return { type: "move-back-right" };
 };
