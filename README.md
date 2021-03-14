@@ -30,3 +30,14 @@ Im bored but I have wine, a sandwich and my computer. Lets see what I can build 
   - Shoot (`useShoot`)
   - Loot (`useLoot`)
   - Interact (`useInteract`)
+
+---
+
+## Todo
+
+- [ ] character obj
+  - [ ] Cube
+  - [ ] Model
+- [ ] Control Camera with mouse
+- [ ] Character Movement with keys
+  > idk what else for now
