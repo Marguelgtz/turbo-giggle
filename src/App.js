@@ -64,7 +64,7 @@ const App = () => {
           color="gray"
           position={[charPos.x, charPos.y, charPos.z]}
         />
-        <PointerLockControls />
+        {/* <PointerLockControls /> */}
 
         <ambientLight intensity={0.2} />
         <Plane />

@@ -8,13 +8,45 @@ const useKeyPress = (targetKey, callback) => {
 
   function downHandler({ key }) {
     //multiple key support
-    if (key === "w" || "a" || "s" || "d") {
-      console.log("valid");
+    // console.log(typeof key);
+    switch (key) {
+      case "w":
+        console.log("w pressed");
+        keysPressed[key] = true;
+        break;
+      case "a":
+        keysPressed[key] = true;
+        break;
+      case "s":
+        keysPressed[key] = true;
+        break;
+      case "d":
+        keysPressed[key] = true;
+        break;
+      default:
+        break;
     }
-    keysPressed[key] = true;
+
+    console.log(keysPressed);
   }
   const upHandler = ({ key }) => {
-    keysPressed[key] = false;
+    switch (key) {
+      case "w":
+        keysPressed[key] = false;
+        break;
+      case "a":
+        keysPressed[key] = false;
+        break;
+      case "s":
+        keysPressed[key] = false;
+        break;
+      case "d":
+        keysPressed[key] = false;
+        break;
+      default:
+        break;
+    }
+    console.log(keysPressed);
   };
 
   useEffect(() => {
@@ -23,6 +55,7 @@ const useKeyPress = (targetKey, callback) => {
 
     return () => {
       window.removeEventListener("keydown", downHandler);
+      window.addEventListener("keyup", upHandler);
     };
   }, []);
   // console.log(keysPressed);

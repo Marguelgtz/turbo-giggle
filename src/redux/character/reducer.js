@@ -1,4 +1,9 @@
 const initialState = {
+  charPos: {
+    x: 0,
+    y: 0,
+    z: 0,
+  },
   movementControl: {
     w: false,
     a: false,
@@ -20,9 +25,8 @@ const charReducer = (state = initialState, action) => {
       // console.log("foward case");
       return {
         ...state,
-        movementControl: action.payload,
+        movementControl: { ...state.charPos, z: state.charPos.z - 1 },
       };
-
     default:
       return state;
   }
