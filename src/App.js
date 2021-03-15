@@ -1,5 +1,11 @@
 import "./App.css";
-import React, { useState, useCallback, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { Canvas } from "react-three-fiber";
 import {
   PointerLockControls,
@@ -24,20 +30,21 @@ import useWasd from "./hooks/useWasd";
 
 const App = () => {
   const dispatch = useDispatch();
-
+  const rerenders = useRef(0);
   //Char position
   const charPos = useSelector((state) => state.character.charPos, shallowEqual);
   // const movementControl = useSelector((state) => state);
 
   //controls
   const wasd = useWasd();
-  console.log("rerender");
-  console.log(wasd);
+
+  //skip move dispatch while redux rerender happens
+  if (rerenders === 2) rerenders.current = 0;
 
   if (wasd.w)
     setTimeout(() => {
       dispatch({ type: "move-front" });
-    }, 500);
+    }, 200);
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
