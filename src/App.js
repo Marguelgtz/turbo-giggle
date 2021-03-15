@@ -40,8 +40,8 @@ const App = () => {
   // console.log("char pos", charPos);
 
   //Char position control
-  useKeyPress();
-
+  const keys = useKeyPress();
+  // console.log(keys);
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
 
