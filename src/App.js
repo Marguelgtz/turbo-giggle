@@ -40,38 +40,7 @@ const App = () => {
   // console.log("char pos", charPos);
 
   //Char position control
-  useKeyPress("w", () => {
-    // console.log("move front fire");
-    dispatch(moveFront());
-  });
-  useKeyPress("s", () => {
-    // console.log("move back fire");
-    dispatch(moveBack());
-  });
-  useKeyPress("a", () => {
-    // console.log("move left fire");
-    dispatch(moveLeft());
-  });
-  useKeyPress("d", () => {
-    // console.log("move right fire");
-    dispatch(moveRight());
-  });
-  // useKeyPress(["w", "d"], () => {
-  //   console.log("move up/right fire");
-  //   dispatch(moveFrontRight());
-  // });
-  // useKeyPress(["w", "a"], () => {
-  //   console.log("move up/left fire");
-  //   dispatch(moveFrontLeft());
-  // });
-  // useKeyPress(["s", "a"], () => {
-  //   console.log("move down/left fire");
-  //   dispatch(moveBackLeft());
-  // });
-  // useKeyPress(["s", "d"], () => {
-  //   console.log("move down/rigth fire");
-  //   dispatch(moveBackRight());
-  // });
+  useKeyPress();
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
@@ -81,14 +50,14 @@ const App = () => {
   const adjustedY = mouseY - windowY / 2;
 
   //continue tomorrow no more wine
-  console.log("rerender");
+
   return (
     <div className="App">
       <Canvas shadowMap style={{ background: "#87CEEB" }}>
         <PerspectiveCamera
           makeDefault // Main Camera
-          // position={[-adjustedX / 100, adjustedY / 100, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
-          position={[charPos.x, charPos.y + 3, charPos.z + 5]}
+          position={[-adjustedX / 100, adjustedY / 100, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
+          // position={[charPos.x, charPos.y + 3, charPos.z + 5]}
         ></PerspectiveCamera>
         <Box
           castShadow

@@ -1,36 +1,32 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const useKeyPress = (targetKey, callback) => {
   const [keyPressed, setKeyPressed] = useState(false);
 
-  // let keysPressed = {};
+  let keysPressed = { w: false, a: false, s: false, d: false };
 
   function downHandler({ key }) {
     //multiple key support
-
-    // console.log(keysPressed);
-    // if (Array.isArray(targetKey)) {
-    //   if (keysPressed[targetKey[0]] && key === targetKey[1]) {
-    //     callback();
-    //   }
-    // }
-    console.log(key);
-    if (key === targetKey) {
-      callback();
+    if (key === "w" || "a" || "s" || "d") {
+      console.log("valid");
     }
+    keysPressed[key] = true;
   }
+  const upHandler = ({ key }) => {
+    keysPressed[key] = false;
+  };
 
   useEffect(() => {
     window.addEventListener("keydown", downHandler);
-    window.addEventListener("keyup", downHandler);
+    window.addEventListener("keyup", upHandler);
 
     return () => {
       window.removeEventListener("keydown", downHandler);
-      window.removeEventListener("keyup", downHandler);
     };
   }, []);
-  // console.log(keyPressed);
-  return keyPressed;
+  // console.log(keysPressed);
+  return keysPressed;
 };
 
 export default useKeyPress;
