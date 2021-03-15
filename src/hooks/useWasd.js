@@ -11,7 +11,6 @@ const useKeyPress = (targetKey, callback) => {
     // console.log(typeof key);
     switch (key) {
       case "w":
-        console.log("w pressed");
         keysPressed[key] = true;
         break;
       case "a":
@@ -26,8 +25,6 @@ const useKeyPress = (targetKey, callback) => {
       default:
         break;
     }
-
-    console.log(keysPressed);
   }
   const upHandler = ({ key }) => {
     switch (key) {
@@ -46,7 +43,6 @@ const useKeyPress = (targetKey, callback) => {
       default:
         break;
     }
-    console.log(keysPressed);
   };
 
   useEffect(() => {
@@ -58,7 +54,7 @@ const useKeyPress = (targetKey, callback) => {
       window.addEventListener("keyup", upHandler);
     };
   }, []);
-  // console.log(keysPressed);
+  console.log(keysPressed);
   return keysPressed;
 };
 

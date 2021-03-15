@@ -12,16 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 //Movement
-import {
-  moveFront,
-  moveBack,
-  moveLeft,
-  moveRight,
-  moveFrontRight,
-  moveFrontLeft,
-  moveBackLeft,
-  moveBackRight,
-} from "./redux/character/actions";
+import { UpdatemovementControl } from "./redux/character/actions";
 
 //Components
 import Plane from "./components/plane";
@@ -29,19 +20,22 @@ import Plane from "./components/plane";
 //Hooks
 import useMousePos from "./hooks/useMousePos";
 import useWindowSize from "./hooks/useWindowSize";
-import useKeyPress from "./hooks/useKeyPress";
+import useWasd from "./hooks/useWasd";
 
 const App = () => {
   const dispatch = useDispatch();
 
   //Char position
   const charPos = useSelector((state) => state.character.charPos);
+  // const movementControl = useSelector((state) => state);
 
-  // console.log("char pos", charPos);
+  //controls
+  const wasd = useWasd();
 
-  //Char position control
-  const keys = useKeyPress();
-  // console.log(keys);
+  //char movement w/ controls
+  // console.log(wasd);
+  if (wasd.w) dispatch({ type: "move-front" });
+
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
 
