@@ -33,8 +33,8 @@ const App = () => {
   const wasd = useWasd();
 
   //char movement w/ controls
-  // console.log(wasd);
-  if (wasd.w) dispatch(moveFront());
+  console.log(wasd);
+  if (wasd.w) dispatch(() => moveFront());
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
@@ -53,6 +53,7 @@ const App = () => {
           position={[-adjustedX / 100, adjustedY / 100, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
           // position={[charPos.x, charPos.y + 3, charPos.z + 5]}
         ></PerspectiveCamera>
+
         <Box
           castShadow
           color="gray"

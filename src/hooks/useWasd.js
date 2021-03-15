@@ -17,16 +17,15 @@ const useKeyPress = (targetKey, callback) => {
     switch (key) {
       case "w":
         setKeysPressed({ ...keysPressed, w: true });
-        // keysPressed[key] = true;
         break;
       case "a":
-        keysPressed[key] = true;
+        setKeysPressed({ ...keysPressed, a: true });
         break;
       case "s":
-        keysPressed[key] = true;
+        setKeysPressed({ ...keysPressed, s: true });
         break;
       case "d":
-        keysPressed[key] = true;
+        setKeysPressed({ ...keysPressed, w: true });
         break;
       default:
         break;
@@ -38,13 +37,13 @@ const useKeyPress = (targetKey, callback) => {
         setKeysPressed({ ...keysPressed, w: false });
         break;
       case "a":
-        keysPressed[key] = false;
+        setKeysPressed({ ...keysPressed, w: false });
         break;
       case "s":
-        keysPressed[key] = false;
+        setKeysPressed({ ...keysPressed, w: false });
         break;
       case "d":
-        keysPressed[key] = false;
+        setKeysPressed({ ...keysPressed, w: false });
         break;
       default:
         break;
@@ -60,7 +59,7 @@ const useKeyPress = (targetKey, callback) => {
       window.addEventListener("keyup", upHandler);
     };
   }, []);
-  console.log(keysPressed);
+  // console.log(keysPressed);
   return keysPressed;
 };
 
