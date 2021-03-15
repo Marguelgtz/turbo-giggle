@@ -21,6 +21,7 @@ const useKeyPress = (targetKey, callback) => {
           break;
         } else {
           keysPressedObj[key] = true;
+
           setKeysPressed({ ...keysPressedObj });
         }
 

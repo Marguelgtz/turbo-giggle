@@ -33,6 +33,7 @@ const App = () => {
   const wasd = useWasd();
   // console.log("rerender");
   console.log(wasd);
+  // this is trying to update dome before render cycle
   if (wasd.w) dispatch({ type: "move-front" });
 
   const { mouseX, mouseY } = useMousePos();
