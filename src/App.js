@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 //Movement
-import { UpdatemovementControl } from "./redux/character/actions";
+import { moveFront } from "./redux/character/actions";
 
 //Components
 import Plane from "./components/plane";
@@ -34,7 +34,7 @@ const App = () => {
 
   //char movement w/ controls
   // console.log(wasd);
-  if (wasd.w) dispatch({ type: "move-front" });
+  if (wasd.w) dispatch(moveFront());
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
