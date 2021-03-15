@@ -17,14 +17,13 @@ const useKeyPress = (targetKey, callback) => {
     // console.log(typeof key);
     switch (key) {
       case "w":
+        //only update if key state changes
         if (keysPressedObj.w) {
           break;
         } else {
           keysPressedObj[key] = true;
-
           setKeysPressed({ ...keysPressedObj });
         }
-
         break;
       case "a":
         keysPressedObj[key] = true;
