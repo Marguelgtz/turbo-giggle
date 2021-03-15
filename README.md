@@ -24,20 +24,18 @@ Im bored but I have wine, a sandwich and my computer. Lets see what I can build 
 ---
 
 ## Hooks
-- `useMousePos()` returns mouse position coordinates **{mouseX | MouseY}**
+- `useMousePos()` returns mouse position coordinates **{ mouseX | MouseY }**
 ```js
 const { mouseX, mouseY } = useMousePos();
 ```
-- `useWindow()` returns window **{windowX | windowY}**
+- `useWindow()` returns window **{ windowX | windowY }**
 ```js
 const { windowX, windowY } = useWindowSize();
 ```
-- `useKeyPress()` recieves desired key press and callback function for when the key is pressed **(keyPressed, callBack)**
+- `useWasd` Returns `WASD` keys status live  **{ w | a | s | d }**
 ```js
-useKeyPress("w", () => {
-    console.log("move front fire");
-    dispatch(moveFront());
-    });
+const wasd = useWasd();
+console.log(wasd) // {w: boolean, a: boolean, s: boolean, d: boolean}
 ```
 
 ## Hook Ideas
