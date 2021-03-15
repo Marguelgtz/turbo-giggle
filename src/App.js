@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useMemo } from "react";
 import { Canvas } from "react-three-fiber";
 import {
   PointerLockControls,
@@ -9,7 +9,7 @@ import {
   OrbitControls,
 } from "@react-three/drei";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
 //Movement
 import { moveFront } from "./redux/character/actions";
@@ -26,13 +26,17 @@ const App = () => {
   const dispatch = useDispatch();
 
   //Char position
-  const charPos = useSelector((state) => state.character.charPos);
+  const charPos = useSelector((state) => state.character.charPos, shallowEqual);
   // const movementControl = useSelector((state) => state);
 
   //controls
   const wasd = useWasd();
   console.log("rerender");
   console.log(wasd);
+  // const moveFr = () => {}
+  // useCallback(() => dispatch({ type: "move-front" }), [
+  //   dispatch,
+  // ]);
   // this is trying to update dome before render cycle
   if (wasd.w) dispatch({ type: "move-front" });
 
