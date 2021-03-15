@@ -2,10 +2,11 @@ import "./App.css";
 import React, { useState, useCallback, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
 import {
-  OrbitControls,
+  PointerLockControls,
   Box,
   Cylinder,
-  PerspectiveCamera,
+  // PerspectiveCamera,
+  FlyControls,
 } from "@react-three/drei";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -84,13 +85,12 @@ const App = () => {
   return (
     <div className="App">
       <Canvas shadowMap style={{ background: "#87CEEB" }}>
-        <PerspectiveCamera
+        {/* <PerspectiveCamera
           makeDefault // Main Camera
           position={[-adjustedX / 100, adjustedY / 100, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
-        >
-          {/* <mesh /> */}
-        </PerspectiveCamera>
-        <OrbitControls />
+     /> */}
+        <PointerLockControls />
+        <FlyControls />
         <ambientLight intensity={0.2} />
         <Plane />
         <spotLight
@@ -103,11 +103,7 @@ const App = () => {
         >
           <object3D position={[charPos.x, charPos.y, charPos.z]} />
         </spotLight>
-        <Box
-          castShadow
-          color="gray"
-          position={[charPos.x, charPos.y, charPos.z]}
-        />
+        <Box castShadow color="gray" position={[0, 0, 0]} />
 
         {/* character movement - dumb/easy way */}
         {/* {!moveFront
