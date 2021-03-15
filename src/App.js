@@ -34,7 +34,10 @@ const App = () => {
   console.log("rerender");
   console.log(wasd);
 
-  if (wasd.w) dispatch({ type: "move-front" });
+  if (wasd.w)
+    setTimeout(() => {
+      dispatch({ type: "move-front" });
+    }, 500);
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
