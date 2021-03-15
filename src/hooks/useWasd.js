@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const useKeyPress = (targetKey, callback) => {
+  const dispatch = useDispatch();
   const [keysPressed, setKeysPressed] = useState({
     w: false,
     a: false,
@@ -16,8 +17,13 @@ const useKeyPress = (targetKey, callback) => {
     // console.log(typeof key);
     switch (key) {
       case "w":
-        keysPressedObj[key] = true;
-        setKeysPressed({ ...keysPressedObj });
+        if (keysPressedObj.w) {
+          break;
+        } else {
+          keysPressedObj[key] = true;
+          setKeysPressed({ ...keysPressedObj });
+        }
+
         break;
       case "a":
         keysPressedObj[key] = true;
@@ -59,12 +65,13 @@ const useKeyPress = (targetKey, callback) => {
   };
 
   useEffect(() => {
+    //ignore downhandler if sesired key is pressed
     window.addEventListener("keydown", downHandler);
     window.addEventListener("keyup", upHandler);
 
     return () => {
       window.removeEventListener("keydown", downHandler);
-      window.addEventListener("keyup", upHandler);
+      window.removeEventListener("keyup", upHandler);
     };
   }, []);
   // console.log(keysPressed);
