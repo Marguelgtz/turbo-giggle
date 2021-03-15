@@ -17,19 +17,19 @@ const useKeyPress = (targetKey, callback) => {
     switch (key) {
       case "w":
         keysPressedObj[key] = true;
-        setKeysPressed({ ...keysPressedObj, w: true });
+        setKeysPressed({ ...keysPressedObj });
         break;
       case "a":
         keysPressedObj[key] = true;
-        setKeysPressed({ ...keysPressedObj, a: true });
+        setKeysPressed({ ...keysPressedObj });
         break;
       case "s":
         keysPressedObj[key] = true;
-        setKeysPressed({ ...keysPressedObj, s: true });
+        setKeysPressed({ ...keysPressedObj });
         break;
       case "d":
         keysPressedObj[key] = true;
-        setKeysPressed({ ...keysPressedObj, d: true });
+        setKeysPressed({ ...keysPressedObj });
         break;
       default:
         break;
@@ -39,19 +39,19 @@ const useKeyPress = (targetKey, callback) => {
     switch (key) {
       case "w":
         keysPressedObj[key] = false;
-        setKeysPressed({ ...keysPressedObj, w: false });
+        setKeysPressed({ ...keysPressedObj });
         break;
       case "a":
         keysPressedObj[key] = false;
-        setKeysPressed({ ...keysPressedObj, a: false });
+        setKeysPressed({ ...keysPressedObj });
         break;
       case "s":
         keysPressedObj[key] = false;
-        setKeysPressed({ ...keysPressedObj, s: false });
+        setKeysPressed({ ...keysPressedObj });
         break;
       case "d":
         keysPressedObj[key] = false;
-        setKeysPressed({ ...keysPressedObj, d: false });
+        setKeysPressed({ ...keysPressedObj });
         break;
       default:
         break;
@@ -67,7 +67,7 @@ const useKeyPress = (targetKey, callback) => {
       window.addEventListener("keyup", upHandler);
     };
   }, []);
-  console.log(keysPressed);
+  // console.log(keysPressed);
   return keysPressed;
 };
 

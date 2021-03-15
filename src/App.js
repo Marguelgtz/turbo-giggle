@@ -33,8 +33,8 @@ const App = () => {
   const wasd = useWasd();
 
   //char movement w/ controls
-  // console.log(wasd);
-  if (wasd.w) moveFront();
+  console.log(wasd);
+  if (wasd.w) dispatch({ type: "move-front" });
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
@@ -54,11 +54,7 @@ const App = () => {
           // position={[charPos.x, charPos.y + 3, charPos.z + 5]}
         ></PerspectiveCamera>
 
-        <Box
-          castShadow
-          color="gray"
-          position={[charPos.x, charPos.y, charPos.z]}
-        />
+        <Box castShadow color="gray" position={[0, 0, 0]} />
         {/* <PointerLockControls /> */}
 
         <ambientLight intensity={0.2} />

@@ -1,6 +1,7 @@
 //Basic Movement
 
 export const moveFront = () => {
+  console.log("move fire");
   return { type: "move-front" };
 };
 
