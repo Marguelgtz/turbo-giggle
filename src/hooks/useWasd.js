@@ -9,23 +9,27 @@ const useKeyPress = (targetKey, callback) => {
     d: false,
   });
 
-  // let keysPressed = { w: false, a: false, s: false, d: false };
+  let keysPressedObj = { w: false, a: false, s: false, d: false };
 
   function downHandler({ key }) {
     //multiple key support
     // console.log(typeof key);
     switch (key) {
       case "w":
-        setKeysPressed({ ...keysPressed, w: true });
+        keysPressedObj[key] = true;
+        setKeysPressed({ ...keysPressedObj, w: true });
         break;
       case "a":
-        setKeysPressed({ ...keysPressed, a: true });
+        keysPressedObj[key] = true;
+        setKeysPressed({ ...keysPressedObj, a: true });
         break;
       case "s":
-        setKeysPressed({ ...keysPressed, s: true });
+        keysPressedObj[key] = true;
+        setKeysPressed({ ...keysPressedObj, s: true });
         break;
       case "d":
-        setKeysPressed({ ...keysPressed, w: true });
+        keysPressedObj[key] = true;
+        setKeysPressed({ ...keysPressedObj, d: true });
         break;
       default:
         break;
@@ -34,16 +38,20 @@ const useKeyPress = (targetKey, callback) => {
   const upHandler = ({ key }) => {
     switch (key) {
       case "w":
-        setKeysPressed({ ...keysPressed, w: false });
+        keysPressedObj[key] = false;
+        setKeysPressed({ ...keysPressedObj, w: false });
         break;
       case "a":
-        setKeysPressed({ ...keysPressed, a: false });
+        keysPressedObj[key] = false;
+        setKeysPressed({ ...keysPressedObj, a: false });
         break;
       case "s":
-        setKeysPressed({ ...keysPressed, s: false });
+        keysPressedObj[key] = false;
+        setKeysPressed({ ...keysPressedObj, s: false });
         break;
       case "d":
-        setKeysPressed({ ...keysPressed, d: false });
+        keysPressedObj[key] = false;
+        setKeysPressed({ ...keysPressedObj, d: false });
         break;
       default:
         break;
@@ -59,7 +67,7 @@ const useKeyPress = (targetKey, callback) => {
       window.addEventListener("keyup", upHandler);
     };
   }, []);
-  // console.log(keysPressed);
+  console.log(keysPressed);
   return keysPressed;
 };
 

@@ -33,7 +33,7 @@ const App = () => {
   const wasd = useWasd();
 
   //char movement w/ controls
-  console.log(wasd);
+  // console.log(wasd);
   if (wasd.w) moveFront();
 
   const { mouseX, mouseY } = useMousePos();
