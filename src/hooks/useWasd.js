@@ -37,13 +37,13 @@ const useKeyPress = (targetKey, callback) => {
         setKeysPressed({ ...keysPressed, w: false });
         break;
       case "a":
-        setKeysPressed({ ...keysPressed, w: false });
+        setKeysPressed({ ...keysPressed, a: false });
         break;
       case "s":
-        setKeysPressed({ ...keysPressed, w: false });
+        setKeysPressed({ ...keysPressed, s: false });
         break;
       case "d":
-        setKeysPressed({ ...keysPressed, w: false });
+        setKeysPressed({ ...keysPressed, d: false });
         break;
       default:
         break;

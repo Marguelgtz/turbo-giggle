@@ -34,7 +34,7 @@ const App = () => {
 
   //char movement w/ controls
   console.log(wasd);
-  if (wasd.w) dispatch(() => moveFront());
+  if (wasd.w) moveFront();
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
