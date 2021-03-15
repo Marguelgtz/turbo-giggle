@@ -22,9 +22,11 @@ const useKeyPress = (targetKey, callback) => {
 
   useEffect(() => {
     window.addEventListener("keydown", downHandler);
+    window.addEventListener("keyup", downHandler);
 
     return () => {
       window.removeEventListener("keydown", downHandler);
+      window.removeEventListener("keyup", downHandler);
     };
   }, []);
   // console.log(keyPressed);
