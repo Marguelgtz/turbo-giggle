@@ -18,7 +18,7 @@ const charReducer = (state = initialState, action) => {
   switch (action.type) {
     case "move-front":
       console.log("foward case");
-
+      debugger;
       return {
         ...state,
         charPos: { ...state.charPos, z: state.charPos.z - 1 },

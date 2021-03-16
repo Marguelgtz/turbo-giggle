@@ -39,12 +39,17 @@ const App = () => {
   const wasd = useWasd();
 
   //skip move dispatch while redux rerender happens
-  if (rerenders === 2) rerenders.current = 0;
+  useEffect(() => {
+    rerenders.current = rerenders.current + 1;
+    if (rerenders.current === 2) rerenders.current = 0;
+    console.log(rerenders.current);
+  });
 
-  if (wasd.w)
-    setTimeout(() => {
-      dispatch({ type: "move-front" });
-    }, 200);
+  const moveFr = useCallback(() => dispatch({ type: "move-front" }), [
+    dispatch,
+  ]);
+  // if (wasd.w) dispatch({ type: "move-front" });
+  if (wasd.w) moveFr();
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
