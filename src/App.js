@@ -31,6 +31,7 @@ import useWasd from "./hooks/useWasd";
 const App = () => {
   const dispatch = useDispatch();
   const rerenders = useRef(0);
+  const moveRender = useRef(null);
   //Char position
   const charPos = useSelector((state) => state.character.charPos);
   // const movementControl = useSelector((state) => state);
@@ -45,11 +46,14 @@ const App = () => {
     console.log(rerenders.current);
   });
 
-  const moveFr = useCallback(() => dispatch({ type: "move-front" }), [
-    dispatch,
-  ]);
+  const moveFr = () => {
+    moveRender.current = rerenders.current;
+    dispatch({ type: "move-front" });
+  };
   // if (wasd.w) dispatch({ type: "move-front" });
-  if (wasd.w) moveFr();
+  if (rerenders.current !== moveRender.current) {
+    if (wasd.w) moveFr();
+  }
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
