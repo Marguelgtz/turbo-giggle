@@ -32,7 +32,7 @@ const App = () => {
   const dispatch = useDispatch();
   const rerenders = useRef(0);
   //Char position
-  const charPos = useSelector((state) => state.character.charPos, shallowEqual);
+  const charPos = useSelector((state) => state.character.charPos);
   // const movementControl = useSelector((state) => state);
 
   //controls
