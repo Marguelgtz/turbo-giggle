@@ -2,7 +2,7 @@
 
 > Github made the name not me
 
-Im bored but I have wine, a sandwich and my computer. Lets see what I can build 👀
+Im bored but I have ~wine~ water, a sandwich and my computer. Lets see what I can build 👀
 
 ---
 
@@ -15,6 +15,7 @@ Im bored but I have wine, a sandwich and my computer. Lets see what I can build 
   - Live Audio Viz?
 - apply hook driven development idea with it
   - Separate funtionality into hooks
+  - (update) not turning out as easy as i though
 - Component based
 - Clean code / commits / branching
 - Good Music
