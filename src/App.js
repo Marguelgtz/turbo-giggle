@@ -30,8 +30,8 @@ import useWasd from "./hooks/useWasd";
 
 const App = () => {
   const dispatch = useDispatch();
-  const rerenders = useRef(0);
-  const moveRender = useRef(null);
+  const rerenders = useRef(true);
+  const moveRender = useRef(true);
   //Char position
   const charPos = useSelector((state) => state.character.charPos);
   // const movementControl = useSelector((state) => state);
@@ -41,29 +41,28 @@ const App = () => {
 
   //skip move dispatch while redux rerender happens
   useEffect(() => {
-    rerenders.current = rerenders.current + 1;
-    if (rerenders.current === 2) rerenders.current = 0;
-    console.log(rerenders.current);
+    rerenders.current = !rerenders.current;
   });
 
   const moveFr = () => {
-    moveRender.current = rerenders.current;
+    rerenders.current = !rerenders.current;
     dispatch({ type: "move-front" });
   };
   const moveBa = () => {
-    moveRender.current = rerenders.current;
+    moveRender.current = !rerenders.current;
     dispatch({ type: "move-back" });
   };
   const moveL = () => {
-    moveRender.current = rerenders.current;
+    moveRender.current = !rerenders.current;
     dispatch({ type: "move-left" });
   };
   const moveR = () => {
-    moveRender.current = rerenders.current;
+    moveRender.current = !rerenders.current;
     dispatch({ type: "move-right" });
   };
+
   // if (wasd.w) dispatch({ type: "move-front" });
-  if (rerenders.current !== moveRender.current) {
+  if (rerenders.current === moveRender.current) {
     if (wasd.w) moveFr();
     if (wasd.s) moveBa();
     if (wasd.a) moveL();
