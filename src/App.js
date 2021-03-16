@@ -1,26 +1,24 @@
 import "./App.css";
-import React, { useState, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { Canvas } from "react-three-fiber";
 import {
-  OrbitControls,
+  PointerLockControls,
   Box,
   Cylinder,
   PerspectiveCamera,
+  OrbitControls,
 } from "@react-three/drei";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
 //Movement
-import {
-  moveFront,
-  moveBack,
-  moveLeft,
-  moveRight,
-  moveFrontRight,
-  moveFrontLeft,
-  moveBackLeft,
-  moveBackRight,
-} from "./redux/character/actions";
+import { moveFront } from "./redux/character/actions";
 
 //Components
 import Plane from "./components/plane";
@@ -28,49 +26,49 @@ import Plane from "./components/plane";
 //Hooks
 import useMousePos from "./hooks/useMousePos";
 import useWindowSize from "./hooks/useWindowSize";
-import useKeyPress from "./hooks/useKeyPress";
+import useWasd from "./hooks/useWasd";
 
 const App = () => {
   const dispatch = useDispatch();
-
+  const rerenders = useRef(0);
+  const moveRender = useRef(null);
   //Char position
   const charPos = useSelector((state) => state.character.charPos);
+  // const movementControl = useSelector((state) => state);
 
-  // console.log("char pos", charPos);
+  //controls
+  const wasd = useWasd();
 
-  //Char position control
-  useKeyPress("w", () => {
-    // console.log("move front fire");
-    dispatch(moveFront());
+  //skip move dispatch while redux rerender happens
+  useEffect(() => {
+    rerenders.current = rerenders.current + 1;
+    if (rerenders.current === 2) rerenders.current = 0;
+    console.log(rerenders.current);
   });
-  useKeyPress("s", () => {
-    // console.log("move back fire");
-    dispatch(moveBack());
-  });
-  useKeyPress("a", () => {
-    // console.log("move left fire");
-    dispatch(moveLeft());
-  });
-  useKeyPress("d", () => {
-    // console.log("move right fire");
-    dispatch(moveRight());
-  });
-  // useKeyPress(["w", "d"], () => {
-  //   console.log("move up/right fire");
-  //   dispatch(moveFrontRight());
-  // });
-  // useKeyPress(["w", "a"], () => {
-  //   console.log("move up/left fire");
-  //   dispatch(moveFrontLeft());
-  // });
-  // useKeyPress(["s", "a"], () => {
-  //   console.log("move down/left fire");
-  //   dispatch(moveBackLeft());
-  // });
-  // useKeyPress(["s", "d"], () => {
-  //   console.log("move down/rigth fire");
-  //   dispatch(moveBackRight());
-  // });
+
+  const moveFr = () => {
+    moveRender.current = rerenders.current;
+    dispatch({ type: "move-front" });
+  };
+  const moveBa = () => {
+    moveRender.current = rerenders.current;
+    dispatch({ type: "move-back" });
+  };
+  const moveL = () => {
+    moveRender.current = rerenders.current;
+    dispatch({ type: "move-left" });
+  };
+  const moveR = () => {
+    moveRender.current = rerenders.current;
+    dispatch({ type: "move-right" });
+  };
+  // if (wasd.w) dispatch({ type: "move-front" });
+  if (rerenders.current !== moveRender.current) {
+    if (wasd.w) moveFr();
+    if (wasd.s) moveBa();
+    if (wasd.a) moveL();
+    if (wasd.d) moveR();
+  }
 
   const { mouseX, mouseY } = useMousePos();
   const { windowX, windowY } = useWindowSize();
@@ -87,10 +85,16 @@ const App = () => {
         <PerspectiveCamera
           makeDefault // Main Camera
           position={[-adjustedX / 100, adjustedY / 100, 10]} // boilerplate position will do follow obj hook for position or through redux maybe
-        >
-          {/* <mesh /> */}
-        </PerspectiveCamera>
-        <OrbitControls />
+          // position={[charPos.x, charPos.y + 3, charPos.z + 5]}
+        ></PerspectiveCamera>
+
+        <Box
+          castShadow
+          color="gray"
+          position={[charPos.x, charPos.y, charPos.z]}
+        />
+        {/* <PointerLockControls /> */}
+
         <ambientLight intensity={0.2} />
         <Plane />
         <spotLight
@@ -103,11 +107,6 @@ const App = () => {
         >
           <object3D position={[charPos.x, charPos.y, charPos.z]} />
         </spotLight>
-        <Box
-          castShadow
-          color="gray"
-          position={[charPos.x, charPos.y, charPos.z]}
-        />
 
         {/* character movement - dumb/easy way */}
         {/* {!moveFront

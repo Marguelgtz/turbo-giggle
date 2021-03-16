@@ -14,33 +14,35 @@ const initialState = {
 
 const charReducer = (state = initialState, action) => {
   console.log(action);
+
   switch (action.type) {
     case "move-front":
-      // console.log("foward case");
+      console.log("foward case");
+      // debugger;
       return {
         ...state,
         charPos: { ...state.charPos, z: state.charPos.z - 1 },
       };
     case "move-back":
-      // console.log("back case");
+      console.log("back case");
       return {
         ...state,
         charPos: { ...state.charPos, z: state.charPos.z + 1 },
       };
     case "move-left":
-      // console.log("left case");
+      console.log("left case");
       return {
         ...state,
         charPos: { ...state.charPos, x: state.charPos.x - 1 },
       };
     case "move-right":
-      // console.log("right case");
+      console.log("right case");
       return {
         ...state,
         charPos: { ...state.charPos, x: state.charPos.x + 1 },
       };
     case "move-front-right":
-      // console.log("front/right case");
+      console.log("front/right case");
       return {
         ...state,
         charPos: {
@@ -50,7 +52,7 @@ const charReducer = (state = initialState, action) => {
         },
       };
     case "move-front-left":
-      // console.log("front/left case");
+      console.log("front/left case");
       return {
         ...state,
         charPos: {
@@ -60,7 +62,7 @@ const charReducer = (state = initialState, action) => {
         },
       };
     case "move-back-left":
-      // console.log("back/left case");
+      console.log("back/left case");
       return {
         ...state,
         charPos: {
@@ -70,14 +72,10 @@ const charReducer = (state = initialState, action) => {
         },
       };
     case "move-back-right":
-      // console.log("right case");
+      console.log("right case");
       return {
         ...state,
-        charPos: {
-          ...state.charPos,
-          x: state.charPos.x + 1,
-          z: state.charPos.z + 1,
-        },
+        charPos: { ...state.charPos, x: state.charPos.x + 1 },
       };
     default:
       return state;

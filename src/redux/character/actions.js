@@ -1,6 +1,7 @@
 //Basic Movement
 
 export const moveFront = () => {
+  console.log("move fire");
   return { type: "move-front" };
 };
 
@@ -30,5 +31,5 @@ export const moveBackLeft = () => {
   return { type: "move-back-left" };
 };
 export const moveBackRight = () => {
-  return { type: "move-back-right" };
+  return { type: "move-down-right" };
 };
