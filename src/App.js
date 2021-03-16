@@ -50,9 +50,24 @@ const App = () => {
     moveRender.current = rerenders.current;
     dispatch({ type: "move-front" });
   };
+  const moveBa = () => {
+    moveRender.current = rerenders.current;
+    dispatch({ type: "move-back" });
+  };
+  const moveL = () => {
+    moveRender.current = rerenders.current;
+    dispatch({ type: "move-left" });
+  };
+  const moveR = () => {
+    moveRender.current = rerenders.current;
+    dispatch({ type: "move-right" });
+  };
   // if (wasd.w) dispatch({ type: "move-front" });
   if (rerenders.current !== moveRender.current) {
     if (wasd.w) moveFr();
+    if (wasd.s) moveBa();
+    if (wasd.a) moveL();
+    if (wasd.d) moveR();
   }
 
   const { mouseX, mouseY } = useMousePos();
